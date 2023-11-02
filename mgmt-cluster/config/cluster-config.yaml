@@ -6,17 +6,17 @@ metadata:
   namespace: flux-system
 data:
   clusterType: "macbook"
-  mgmtClusterName: ww-paulc-macbook
+  mgmtClusterName: ww-paulc-mac
   dnsSuffix: kubernetes.docker.internal
-  clusterIP: 10.108.205.53
+  clusterIP: 10.110.43.225
   scmType: github
   GitHubOrg: ww-gitops
-  GitHubRepo: paulc-macbook
+  GitHubRepo: paulc-mac
   globalGitHubOrg: ww-gitops
   globalGitHubRepo: global-config
   globalGitHubBranch: main
   awsAccountId: "749339757188"
-  prefixName: ww-prc-macbook
+  prefixName: ww-prc-mac
   awsRegion: eu-west-1
   awsTagCreator: paul.carlton@weave.works
   awsTagCustomer: weaveworks-cx
