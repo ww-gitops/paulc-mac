@@ -45,14 +45,17 @@ spec:
               subscriptionId: "{{ .Element.subscriptionId }}"
               keycloakUrl: "{{ .Element.keycloakUrl }}"
           patches:
-            - patch: |-
-                apiVersion: infra.contrib.fluxcd.io/v1alpha2
-                kind: Terraform
-                metadata:
-                  annotations:
-                    cluster-autoscaler.kubernetes.io/safe-to-evict: "true"   
+            - patch: |
+                {{- range .Element.organizations }}
+                - op: add
+                  path: "/spec/vars/6/value/-"
+                  value:
+                    "- {{ . }}"
+                {{- end}}
               target:
                 kind: Terraform
+                group: infra.contrib.fluxcd.io
+                version: v1alpha2
                 labelSelector: "app.kubernetes.io/component=keycloak-client-realms-{{ substr 0 8 .Element.enterpriseId }}"
 
 
