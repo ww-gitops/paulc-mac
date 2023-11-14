@@ -34,7 +34,7 @@ spec:
             kind: GitRepository
             name: flux-system
             namespace: test-one
-          timeout: 5m
+          timeout: 1m # for testing
           wait: true
           postBuild:
             substitute:
@@ -56,3 +56,4 @@ spec:
                 group: infra.contrib.fluxcd.io
                 version: v1alpha2
                 kind: Terraform
+                labelSelector: "app.kubernetes.io/component=keycloak-client-realms-{{ substr 0 8 .Element.enterpriseId }}"
