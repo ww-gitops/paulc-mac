@@ -34,7 +34,7 @@ spec:
             kind: GitRepository
             name: flux-system
             namespace: test-one
-          timeout: 30m
+          timeout: 5m
           wait: true
           postBuild:
             substitute:
