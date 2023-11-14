@@ -53,5 +53,6 @@ spec:
                     "- {{ . }}"
                 {{- end}}
               target:
+                apiVersion: infra.contrib.fluxcd.io/v1alpha2
                 kind: Terraform
                 labelSelector: "app.kubernetes.io/component=keycloak-client-realms-{{ substr 0 8 .Element.enterpriseId }}"
