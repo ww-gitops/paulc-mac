@@ -12,12 +12,16 @@ spec:
   patches:
   - patch: |
       - op: add
-        path: /spec/path
-        value: ./nowhere
+        path: "/spec/vars/6/value/-"
+        value:
+          - "org1"
+          - "org2"
+          - "org3"
     target:
       group: infra.contrib.fluxcd.io
       kind: Terraform
       version: v1alpha2
+      labelSelector: app.kubernetes.io/component=keycloak-client-realms-2e63d88d
   path: ./test-603/kust
   postBuild:
     substitute:

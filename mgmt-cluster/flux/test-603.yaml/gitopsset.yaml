@@ -47,7 +47,7 @@ spec:
           patches:
             - patch: |
                 - op: add
-                  path: "/spec/vars/6/value/-"
+                  path: "/spec/vars/6/value"
                   value:
                   {{- range .Element.organizations }}
                     - "{{ . }}"
