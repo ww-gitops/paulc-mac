@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/component: keycloak-client-realms-2e63d88d
     kustomize.toolkit.fluxcd.io/name: enterprise-tenant-2e63d88d
     kustomize.toolkit.fluxcd.io/namespace: test-one
-  name: keycloak-client-realms-2e63d88d-m
+  name: keycloak-client-realms-2e63d88d-k
   namespace: test-one
 spec:
   alwaysCleanupRunnerPod: true
