@@ -50,7 +50,7 @@ spec:
                   path: "/spec/vars/6/value/-"
                   value:
                   {{- range .Element.organizations }}
-                    - {{ . }}
+                    - "{{ . }}"
                   {{- end}}
               target:
                 group: infra.contrib.fluxcd.io
