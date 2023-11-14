@@ -242,26 +242,26 @@ spec:
       - kind: ConfigMap
         name: cluster-config
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: prom-graf
-  namespace: flux-system
-spec:
-  interval: 10m0s
-  dependsOn:
-    - name: secrets
-  path: ./mgmt-cluster/addons/prom-graf
-  prune: true
-  wait: true
-  sourceRef:
-    kind: GitRepository
-    name: global-config
-  postBuild:
-    substituteFrom:
-      - kind: ConfigMap
-        name: cluster-config
----
+# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+# kind: Kustomization
+# metadata:
+#   name: prom-graf
+#   namespace: flux-system
+# spec:
+#   interval: 10m0s
+#   dependsOn:
+#     - name: secrets
+#   path: ./mgmt-cluster/addons/prom-graf
+#   prune: true
+#   wait: true
+#   sourceRef:
+#     kind: GitRepository
+#     name: global-config
+#   postBuild:
+#     substituteFrom:
+#       - kind: ConfigMap
+#         name: cluster-config
+# ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
@@ -291,7 +291,7 @@ spec:
   interval: 10m0s
   dependsOn:
     - name: wge
-    - name: prom-graf
+    # - name: prom-graf
   path: ./mgmt-cluster/bases/flux
   prune: true
   wait: true
