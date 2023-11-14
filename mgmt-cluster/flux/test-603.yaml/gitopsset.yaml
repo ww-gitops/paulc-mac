@@ -45,12 +45,15 @@ spec:
               subscriptionId: "{{ .Element.subscriptionId }}"
               keycloakUrl: "{{ .Element.keycloakUrl }}"
           patches:
-            - patch: |
-                {{- range .Element.organizations }}
-                - op: add
-                  path: "/spec/vars/6/value/-"
-                  value:
-                    "- {{ . }}"
-                {{- end}}
-              target:
+            - patch: |-
+              apiVersion: infra.contrib.fluxcd.io/v1alpha2
+              kind: Terraform
+              metadata:
+                name: not-used
                 labelSelector: "app.kubernetes.io/component=keycloak-client-realms-{{ substr 0 8 .Element.enterpriseId }}"
+              spec:
+                vars:
+                  - name: organizations
+                  - value: what
+
+
