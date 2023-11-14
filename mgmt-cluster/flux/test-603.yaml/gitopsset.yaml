@@ -28,7 +28,7 @@ spec:
         spec:
           interval: 1m
           path: ./test-603/per-ent-manifests/
-          serviceAccountName: gitopsset
+          # serviceAccountName: gitopsset
           prune: true
           sourceRef:
             kind: GitRepository
