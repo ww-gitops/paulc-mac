@@ -46,12 +46,9 @@ spec:
               keycloakUrl: "{{ .Element.keycloakUrl }}"
           patches:
             - patch: |
-                {{- range .Element.organizations }}
                 - op: add
-                  path: "/spec/vars/6/value/-"
-                  value:
-                    "- {{ . }}"
-                {{- end}}
+                  path: /spec/path
+                  value: ./nowhere
               target:
                 kind: Terraform
                 group: infra.contrib.fluxcd.io
