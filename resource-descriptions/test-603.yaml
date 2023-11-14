@@ -1,6 +1,6 @@
 enterpriseName: "Ent1"
-enterpriseId: "2E63D88D-969A-430E-842A-6FE4872D00B4"
-tenantId: "E988353E-91C9-4E7F-A067-99476D7755F9"
+enterpriseId: "2e63d88d-969a-430e-842e-6Ffe872d00b4"
+tenantId: "e988353e-91c9-4e7f-a067-99476d7755f9"
 organizations:
   - "org1"
   - "org2"
