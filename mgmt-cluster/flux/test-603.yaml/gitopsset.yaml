@@ -1,0 +1,57 @@
+apiVersion: templates.weave.works/v1alpha1
+kind: GitOpsSet
+metadata:
+  name: enterprise-tenant-gitopsset-generator
+  namespace: test-one
+spec:
+  serviceAccountName: gitopssets
+  generators:
+    - matrix:
+        generators:
+          - gitRepository:
+              repositoryRef: flux-system
+              files:
+                - path: resource-descriptions/test-603.yaml
+
+          - list:
+              elements:
+                - centralEnv: "dv"
+                  subscriptionId: "603"  
+                  keycloakUrl: "https://whatever.com"
+  templates:
+    - content:
+        kind: Kustomization
+        apiVersion: kustomize.toolkit.fluxcd.io/v1
+        metadata:
+          name: "enterprise-tenant-{{ substr 0 8 .Element.enterpriseId }}"
+          namespace: test-one
+        spec:
+          interval: 1m
+          path: ./test-603/per-ent-manifests/
+          serviceAccountName: gitopsset
+          prune: true
+          sourceRef:
+            kind: GitRepository
+            name: flux-system
+            namespace: test-one
+          timeout: 30m
+          wait: true
+          postBuild:
+            substitute:
+              enterprise: "{{ .Element.enterpriseName }}"
+              enterpriseId: "{{ .Element.enterpriseId }}"
+              tenantId: "{{ .Element.tenantId }}"
+              centralEnv: "{{ .Element.centralEnv }}"
+              subscriptionId: "{{ .Element.subscriptionId }}"
+              keycloakUrl: "{{ .Element.keycloakUrl }}"
+          patches:
+            - patch: |
+                {{- range .Element.organizations }}
+                - op: add
+                  path: "/spec/vars/7/value/-"
+                  value:
+                    "- {{ . }}"
+                {{- end}}
+              target:
+                kind: Terraform
+                labelSelector: "app.kubernetes.io/component=keycloak-client-realms-{{ substr 0 8 .Element.enterpriseId }}"

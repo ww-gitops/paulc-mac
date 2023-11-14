@@ -1,0 +1,7 @@
+enterpriseName: "Ent1"
+enterpriseId: "2E63D88D-969A-430E-842A-6FE4872D00B4"
+tenantId: "E988353E-91C9-4E7F-A067-99476D7755F9"
+organizations:
+  - "org1"
+  - "org2"
+  - "org3"
