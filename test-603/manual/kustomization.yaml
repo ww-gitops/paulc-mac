@@ -1,0 +1,10 @@
+# kustomization.yaml
+resources:
+- tf.yaml
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/path
+        value: ./nowhere  
+    target:
+      labelSelector: "app.kubernetes.io/component=keycloak-client-realms-2e63d88d"
