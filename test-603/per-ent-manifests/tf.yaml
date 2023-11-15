@@ -37,8 +37,6 @@ spec:
       value: ${centralEnv}
     - name: keycloak_url
       value: ${keycloakUrl}
-    - name: organizations
-      value:
   varsFrom:
     - kind: Secret
       name: empower-sso-client-secret-realm
