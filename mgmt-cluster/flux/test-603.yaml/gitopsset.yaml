@@ -47,11 +47,13 @@ spec:
           patches:
             - patch: |
                 - op: add
-                  path: "/spec/vars/6/value"
+                  path: "/spec/vars/-"
                   value:
-                  {{- range .Element.organizations }}
-                    - "{{ . }}"
-                  {{- end}}
+                    name: organizations
+                    value:
+                    {{- range .Element.organizations }}
+                      - {{ . }}
+                    {{- end}}
               target:
                 group: infra.contrib.fluxcd.io
                 version: v1alpha2
