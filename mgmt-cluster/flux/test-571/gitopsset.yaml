@@ -29,7 +29,6 @@ spec:
         spec:
           interval: 5m
           path: "{{ .Element.Directory }}/{{ .Element.Base }}"
-          # serviceAccountName: gitopsset
           prune: true
           sourceRef:
             kind: GitRepository
