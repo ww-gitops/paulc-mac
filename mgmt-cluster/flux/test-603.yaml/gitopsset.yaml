@@ -55,4 +55,5 @@ spec:
                       - {{ . }}
                     {{- end}}
               target:
-                labelSelector: "app.kubernetes.io/component=keycloak-client-realm-{{ substr 0 8 .Element.enterpriseId }}"
+                kind: Terraform
+                labelSelector: "app.kubernetes.io/component=keycloak-client-realms-{{ substr 0 8 .Element.enterpriseId }}"
