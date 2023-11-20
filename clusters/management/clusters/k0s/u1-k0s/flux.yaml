@@ -1,0 +1,48 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: kind-u1-k0s-gitops-kubeconfig
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: ./leaf-clusters/wge/kubeconfig
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-config
+    substitute:
+      clusterName: k0s
+      resourceName: kind-u1
+      secret_name: kind-u1-k0s
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: global-config
+    namespace: flux-system
+  timeout: 1m
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  annotations:
+    templates.weave.works/create-request: ""
+  name: kind-u1-k0s-gitops-cluster
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: kind-u1-k0s-gitops-kubeconfig
+  interval: 10m0s
+  path: ./leaf-clusters/wge/gitops-cluster
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-config
+    substitute:
+      clusterName: k0s
+      resourceName: kind-u1
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: global-config
+    namespace: flux-system
+  timeout: 1m
