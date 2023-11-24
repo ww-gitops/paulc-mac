@@ -52,6 +52,22 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
+  name: metrics-server
+  namespace: flux-system
+spec:
+  dependsOn:
+  - name: nginx
+  interval: 10m0s
+  path: ./mgmt-cluster/addons/metrics-server
+  prune: true
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: global-config
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
   name: reloader
   namespace: flux-system
 spec:
@@ -210,7 +226,6 @@ spec:
   interval: 10m0s
   dependsOn:
     - name: dex
-    - name: config
   path: ./mgmt-cluster/addons/wge
   prune: true
   wait: true
