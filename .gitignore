@@ -8,4 +8,3 @@ resources/*-password.txt
 .terraform
 *.tfstate*
 .terraform.lock.hcl
-.what
