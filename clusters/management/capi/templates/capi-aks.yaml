@@ -8,25 +8,25 @@ metadata:
 spec:
   data:
   - remoteRef:
-      key: demo/capz-manager-bootstrap-credentials
+      key: capz-manager-bootstrap-credentials
       property: client-id
     secretKey: client-id
   - remoteRef:
-      key: demo/capz-manager-bootstrap-credentials
+      key: capz-manager-bootstrap-credentials
       property: client-secret
     secretKey: client-secret
   - remoteRef:
-      key: demo/capz-manager-bootstrap-credentials
+      key: capz-manager-bootstrap-credentials
       property: subscription-id
     secretKey: subscription-id
   - remoteRef:
-      key: demo/capz-manager-bootstrap-credentials
+      key: capz-manager-bootstrap-credentials
       property: tenant-id
     secretKey: tenant-id
   refreshInterval: 1h0m0s
   secretStoreRef:
     kind: ClusterSecretStore
-    name: aws-secretstore
+    name: vault
   target:
     creationPolicy: Owner
     name: capz-manager-bootstrap-credentials
@@ -108,34 +108,34 @@ spec:
     - name: MACHINE_POOL_1_DISK
       description: The Disk Size for machine pool 1
       default: '40'
-  charts:
-    items:
-      - chart: cert-manager
-        version: 0.0.8
-        targetNamespace: cert-manager
-        editable: true
-        required: true
-      - chart: ingress-nginx
-        version: 0.0.18
-        targetNamespace: ingress-nginx
-        editable: true
-        required: true
-      - chart: weave-policy-agent
-        version: 0.5.4
-        targetNamespace: policy-system
-        editable: true
-        required: true
-        values:
-          policy-agent:
-            config:
-              AGENT_ENABLE_ADMISSION: "0"
-            accountId: ${ACCOUNT_ID}
-            clusterId: ${CLUSTER_NAME}
-      - chart: prometheus
-        version: 0.0.11
-        targetNamespace: prometheus
-        editable: true
-        required: true
+  # charts:
+  #   items:
+  #     - chart: cert-manager
+  #       version: 0.0.8
+  #       targetNamespace: cert-manager
+  #       editable: true
+  #       required: true
+  #     - chart: ingress-nginx
+  #       version: 0.0.18
+  #       targetNamespace: ingress-nginx
+  #       editable: true
+  #       required: true
+  #     - chart: weave-policy-agent
+  #       version: 0.5.4
+  #       targetNamespace: policy-system
+  #       editable: true
+  #       required: true
+  #       values:
+  #         policy-agent:
+  #           config:
+  #             AGENT_ENABLE_ADMISSION: "0"
+  #           accountId: ${ACCOUNT_ID}
+  #           clusterId: ${CLUSTER_NAME}
+  #     - chart: prometheus
+  #       version: 0.0.11
+  #       targetNamespace: prometheus
+  #       editable: true
+  #       required: true
   resourcetemplates:
     - content:
       - apiVersion: gitops.weave.works/v1alpha1
