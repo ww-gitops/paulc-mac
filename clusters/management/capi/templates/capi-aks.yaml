@@ -41,7 +41,7 @@ spec:
   allowedNamespaces: {}
   type: ServicePrincipal
   tenantID: '3747a928-2079-440f-8f0f-ab1be2a7c058'
-  clientID: '75dcbcd3-e21e-4b31-8561-ff50e4bab776'
+  clientID: '4ecc1fde-03dd-4175-b7d4-720fd737b3e6'
   clientSecret:
     name: capz-manager-bootstrap-credentials
     namespace: capz
@@ -52,7 +52,7 @@ metadata:
   name: aks-template
   namespace: default
   annotations:
-    templates.weave.works/profiles-enabled: "true"
+    templates.weave.works/profiles-enabled: "false"
     templates.weave.works/kustomizations-enabled: "false"
     templates.weave.works/credentials-enabled: "true"
     templates.weave.works/add-common-bases: "true"
