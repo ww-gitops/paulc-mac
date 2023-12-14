@@ -8,7 +8,7 @@ metadata:
   name: test
   namespace: default
   annotations:
-    templates.weave.works/create-request: "{\"repository_url\":\"https://github.com/ww-gitops/paulc-mac\",\"head_branch\":\"wge-create-branch-2qv7yq\",\"base_branch\":\"main\",\"title\":\"Create resource test\",\"description\":\"This PR creates a aws-eks-dev instance\",\"name\":\"aws-eks-dev\",\"parameter_values\":{\"AWS_REGION\":\"eu-west-1\",\"CLUSTER_NAME\":\"test\",\"KUBERNETES_VERSION\":\"v1.27\",\"WORKER_MACHINE_COUNT\":\"2\"},\"commit_message\":\"Create aws-eks-dev instance\",\"credentials\":{},\"namespace\":\"default\",\"template_kind\":\"GitOpsTemplate\"}"
+    templates.weave.works/create-request: "{\"repository_url\":\"https://github.com/ww-gitops/paulc-mac\",\"head_branch\":\"edit-test-branch-41e748\",\"base_branch\":\"main\",\"title\":\"Edit test\",\"description\":\"This PR edits the resource test\",\"name\":\"aws-eks-dev\",\"parameter_values\":{\"AWS_REGION\":\"eu-west-1\",\"CLUSTER_NAME\":\"test\",\"KUBERNETES_VERSION\":\"v1.28\",\"WORKER_MACHINE_COUNT\":\"2\"},\"commit_message\":\"Edit test\",\"credentials\":{},\"namespace\":\"default\",\"template_kind\":\"GitOpsTemplate\"}"
     templates.weave.works/created-files: "{\"files\":[\"clusters/management/clusters/default/test.yaml\"]}"
 spec:
   capiClusterRef:
@@ -43,7 +43,7 @@ kind: AWSManagedControlPlane
 metadata:
   annotations:
     kustomize.toolkit.fluxcd.io/prune: disabled
-    templates.weave.works/create-request: "{\"repository_url\":\"https://github.com/ww-gitops/paulc-mac\",\"head_branch\":\"wge-create-branch-2qv7yq\",\"base_branch\":\"main\",\"title\":\"Create resource test\",\"description\":\"This PR creates a aws-eks-dev instance\",\"name\":\"aws-eks-dev\",\"parameter_values\":{\"AWS_REGION\":\"eu-west-1\",\"CLUSTER_NAME\":\"test\",\"KUBERNETES_VERSION\":\"v1.27\",\"WORKER_MACHINE_COUNT\":\"2\"},\"commit_message\":\"Create aws-eks-dev instance\",\"credentials\":{},\"namespace\":\"default\",\"template_kind\":\"GitOpsTemplate\"}"
+    templates.weave.works/create-request: "{\"repository_url\":\"https://github.com/ww-gitops/paulc-mac\",\"head_branch\":\"edit-test-branch-41e748\",\"base_branch\":\"main\",\"title\":\"Edit test\",\"description\":\"This PR edits the resource test\",\"name\":\"aws-eks-dev\",\"parameter_values\":{\"AWS_REGION\":\"eu-west-1\",\"CLUSTER_NAME\":\"test\",\"KUBERNETES_VERSION\":\"v1.28\",\"WORKER_MACHINE_COUNT\":\"2\"},\"commit_message\":\"Edit test\",\"credentials\":{},\"namespace\":\"default\",\"template_kind\":\"GitOpsTemplate\"}"
     templates.weave.works/created-files: "{\"files\":[\"clusters/management/clusters/default/test.yaml\"]}"
   labels:
     templates.weave.works/template-name: aws-eks-dev
@@ -54,7 +54,7 @@ spec:
   additionalTags:
     creator: paul.carlton@weave.works
     customer: weaveworks-cx
-    projectGid: "99999"
+    projectGid: 99999
   addons:
   - conflictResolution: overwrite
     name: vpc-cni
@@ -62,7 +62,7 @@ spec:
   eksClusterName: test
   region: eu-west-1
   sshKeyName: paulcarlton-ww
-  version: v1.27
+  version: v1.28
 
 ---
 apiVersion: cluster.x-k8s.io/v1beta1
@@ -70,7 +70,7 @@ kind: MachinePool
 metadata:
   annotations:
     kustomize.toolkit.fluxcd.io/prune: disabled
-    templates.weave.works/create-request: "{\"repository_url\":\"https://github.com/ww-gitops/paulc-mac\",\"head_branch\":\"wge-create-branch-2qv7yq\",\"base_branch\":\"main\",\"title\":\"Create resource test\",\"description\":\"This PR creates a aws-eks-dev instance\",\"name\":\"aws-eks-dev\",\"parameter_values\":{\"AWS_REGION\":\"eu-west-1\",\"CLUSTER_NAME\":\"test\",\"KUBERNETES_VERSION\":\"v1.27\",\"WORKER_MACHINE_COUNT\":\"2\"},\"commit_message\":\"Create aws-eks-dev instance\",\"credentials\":{},\"namespace\":\"default\",\"template_kind\":\"GitOpsTemplate\"}"
+    templates.weave.works/create-request: "{\"repository_url\":\"https://github.com/ww-gitops/paulc-mac\",\"head_branch\":\"edit-test-branch-41e748\",\"base_branch\":\"main\",\"title\":\"Edit test\",\"description\":\"This PR edits the resource test\",\"name\":\"aws-eks-dev\",\"parameter_values\":{\"AWS_REGION\":\"eu-west-1\",\"CLUSTER_NAME\":\"test\",\"KUBERNETES_VERSION\":\"v1.28\",\"WORKER_MACHINE_COUNT\":\"2\"},\"commit_message\":\"Edit test\",\"credentials\":{},\"namespace\":\"default\",\"template_kind\":\"GitOpsTemplate\"}"
     templates.weave.works/created-files: "{\"files\":[\"clusters/management/clusters/default/test.yaml\"]}"
   labels:
     templates.weave.works/template-name: aws-eks-dev
@@ -96,7 +96,7 @@ kind: AWSManagedMachinePool
 metadata:
   annotations:
     kustomize.toolkit.fluxcd.io/prune: disabled
-    templates.weave.works/create-request: "{\"repository_url\":\"https://github.com/ww-gitops/paulc-mac\",\"head_branch\":\"wge-create-branch-2qv7yq\",\"base_branch\":\"main\",\"title\":\"Create resource test\",\"description\":\"This PR creates a aws-eks-dev instance\",\"name\":\"aws-eks-dev\",\"parameter_values\":{\"AWS_REGION\":\"eu-west-1\",\"CLUSTER_NAME\":\"test\",\"KUBERNETES_VERSION\":\"v1.27\",\"WORKER_MACHINE_COUNT\":\"2\"},\"commit_message\":\"Create aws-eks-dev instance\",\"credentials\":{},\"namespace\":\"default\",\"template_kind\":\"GitOpsTemplate\"}"
+    templates.weave.works/create-request: "{\"repository_url\":\"https://github.com/ww-gitops/paulc-mac\",\"head_branch\":\"edit-test-branch-41e748\",\"base_branch\":\"main\",\"title\":\"Edit test\",\"description\":\"This PR edits the resource test\",\"name\":\"aws-eks-dev\",\"parameter_values\":{\"AWS_REGION\":\"eu-west-1\",\"CLUSTER_NAME\":\"test\",\"KUBERNETES_VERSION\":\"v1.28\",\"WORKER_MACHINE_COUNT\":\"2\"},\"commit_message\":\"Edit test\",\"credentials\":{},\"namespace\":\"default\",\"template_kind\":\"GitOpsTemplate\"}"
     templates.weave.works/created-files: "{\"files\":[\"clusters/management/clusters/default/test.yaml\"]}"
   labels:
     templates.weave.works/template-name: aws-eks-dev
