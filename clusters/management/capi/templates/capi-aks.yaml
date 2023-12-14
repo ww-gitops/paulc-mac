@@ -1,50 +1,3 @@
----
-apiVersion: external-secrets.io/v1beta1
-kind: ExternalSecret
-metadata:
-  creationTimestamp: null
-  name: capz-manager-bootstrap-credentials
-  namespace:  capz
-spec:
-  data:
-  - remoteRef:
-      key: capz-manager-bootstrap-credentials
-      property: client-id
-    secretKey: client-id
-  - remoteRef:
-      key: capz-manager-bootstrap-credentials
-      property: client-secret
-    secretKey: client-secret
-  - remoteRef:
-      key: capz-manager-bootstrap-credentials
-      property: subscription-id
-    secretKey: subscription-id
-  - remoteRef:
-      key: capz-manager-bootstrap-credentials
-      property: tenant-id
-    secretKey: tenant-id
-  refreshInterval: 1h0m0s
-  secretStoreRef:
-    kind: ClusterSecretStore
-    name: vault
-  target:
-    creationPolicy: Owner
-    name: capz-manager-bootstrap-credentials
----
-apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
-kind: AzureClusterIdentity
-metadata:
-  name: capz-manager-bootstrap-credentials
-  namespace: default
-spec:
-  allowedNamespaces: {}
-  type: ServicePrincipal
-  tenantID: '3747a928-2079-440f-8f0f-ab1be2a7c058'
-  clientID: '4ecc1fde-03dd-4175-b7d4-720fd737b3e6'
-  clientSecret:
-    name: capz-manager-bootstrap-credentials
-    namespace: capz
----
 apiVersion: templates.weave.works/v1alpha2
 kind: GitOpsTemplate
 metadata:
@@ -60,7 +13,7 @@ metadata:
     weave.works/template-type: cluster
 spec:
   description: AKS Azure Kubernetes Service template
-  renderType: templating
+  # renderType: templating
   params:
     - name: CLUSTER_NAME
       description: The name for this cluster. ALL LOWERCASE OR NUMBERS ONLY
@@ -215,3 +168,49 @@ spec:
           mode: User
           osDiskSizeGB: ${MACHINE_POOL_1_DISK}
           sku: ${MACHINE_POOL_1_INSTANCE}
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  creationTimestamp: null
+  name: capz-manager-bootstrap-credentials
+  namespace:  capz
+spec:
+  data:
+  - remoteRef:
+      key: capz-manager-bootstrap-credentials
+      property: client-id
+    secretKey: client-id
+  - remoteRef:
+      key: capz-manager-bootstrap-credentials
+      property: client-secret
+    secretKey: client-secret
+  - remoteRef:
+      key: capz-manager-bootstrap-credentials
+      property: subscription-id
+    secretKey: subscription-id
+  - remoteRef:
+      key: capz-manager-bootstrap-credentials
+      property: tenant-id
+    secretKey: tenant-id
+  refreshInterval: 1h0m0s
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: vault
+  target:
+    creationPolicy: Owner
+    name: capz-manager-bootstrap-credentials
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: AzureClusterIdentity
+metadata:
+  name: capz-manager-bootstrap-credentials
+  namespace: default
+spec:
+  allowedNamespaces: {}
+  type: ServicePrincipal
+  tenantID: '3747a928-2079-440f-8f0f-ab1be2a7c058'
+  clientID: '4ecc1fde-03dd-4175-b7d4-720fd737b3e6'
+  clientSecret:
+    name: capz-manager-bootstrap-credentials
+    namespace: capz
